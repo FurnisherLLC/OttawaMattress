@@ -1,0 +1,125 @@
+---
+import Base from '../layouts/Base.astro';
+import business from '../data/business.json';
+---
+
+<Base
+  title="Our Story | Ottawa Mattress, Beaumont Collection"
+  description="Ottawa Luxury Mattress is built on decades of upholstery craft and a belief that handcrafted quality doesn't have to cost three times what it should. Learn who we are and why we build what we build."
+>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>Our Story</h1>
+      <p>We're not a mattress chain. We're craftspeople who figured out how to do this better.</p>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="container story-body">
+
+      <div class="story-section">
+        <h2>Kessels Upholstery, Ottawa</h2>
+        <p>
+          Ottawa Luxury Mattress is an extension of Kessels Upholstery, a long-standing
+          upholstery and furniture operation at 107 Colonnade Rd S in Nepean. We know
+          how things are built. We know what quality materials feel like and how long
+          they actually last. That background is what makes us different from a retail
+          mattress store.
+        </p>
+        <p>
+          We're not a franchise. We don't carry a catalog. We look at what people actually
+          need, source the right materials, and have it built properly.
+        </p>
+      </div>
+
+      <div class="story-section">
+        <h2>The Mennonite builders</h2>
+        <p>
+          Every Beaumont mattress is handcrafted by Mennonite artisans in South Ontario.
+          These are families who have been building furniture and mattresses for generations.
+          No assembly line. No robotics. No shortcuts in materials.
+        </p>
+        <p>
+          We work directly with our builders. We specify every detail of every mattress:
+          the latex ILD, the ticking fabric, the tufting pattern, the zipper placement.
+          They execute it. We stand behind it.
+        </p>
+      </div>
+
+      <div class="story-section">
+        <h2>Why natural latex</h2>
+        <p>
+          Memory foam became dominant in the mattress industry because it's cheap to produce
+          and easy to market. "Conforms to your body" sounds great until the foam has
+          compressed 40% and your mattress is five years old.
+        </p>
+        <p>
+          Natural latex doesn't work that way. It's harvested from rubber trees, processed
+          into a resilient foam, and it genuinely lasts 25 years or more. It doesn't
+          compress under weight the way synthetic foam does. It's naturally hypoallergenic
+          and antimicrobial. It doesn't off-gas. It sleeps cooler because it's actually breathable.
+        </p>
+        <p>
+          The only reason natural latex mattresses are expensive is that the major brands
+          have built enormous markup chains between the material and the consumer. We haven't.
+          We go direct.
+        </p>
+      </div>
+
+      <div class="story-section">
+        <h2>The pricing</h2>
+        <p>
+          A Beaumont mattress starts at $1,200 CAD and goes to $6,000 depending on size
+          and specification. A comparable custom build from Hästens or Vi Spring would run
+          $8,000 to $20,000+. A Saatva "luxury" latex mattress is $2,000+ for a product
+          you have no hand in specifying.
+        </p>
+        <p>
+          We're not trying to be the cheapest mattress in Ottawa. We're trying to be the
+          best value for someone who wants a real, lasting mattress built to their needs.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section section--navy text-center">
+    <div class="container" style="max-width: 580px;">
+      <h2>Come see for yourself</h2>
+      <p style="opacity: 0.82; margin: 1rem 0 2rem; line-height: 1.75;">
+        We have mattresses in the showroom. Come in, lie on one, ask us anything.
+        No appointment needed during business hours.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="/contact/" class="btn btn-outline-cream">Visit the Showroom</a>
+        <a href={`tel:${business.phone}`} class="btn btn-outline-cream">{business.phoneFormatted}</a>
+      </div>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  .story-body {
+    max-width: 720px;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+  }
+
+  .story-section h2 {
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .story-section p {
+    color: var(--color-text-muted);
+    margin-bottom: 1.25rem;
+    font-size: 1.02rem;
+    line-height: 1.78;
+  }
+
+  .story-section p:last-child { margin-bottom: 0; }
+</style>

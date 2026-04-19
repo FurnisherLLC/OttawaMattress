@@ -1,0 +1,45 @@
+---
+import business from '../data/business.json';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand__wordmark">Ottawa Mattress</div>
+        <div class="footer-brand__sub">Beaumont Collection by Ottawa Luxury Mattress</div>
+        <p class="footer-brand__tagline">{business.tagline}</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="/beaumont-collection/">The Collection</a></li>
+          <li><a href="/sleep-guide/">Sleep Guide</a></li>
+          <li><a href="/our-story/">Our Story</a></li>
+          <li><a href="/contact/">Contact & Hours</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Visit Us</h4>
+        <ul>
+          <li>{business.address.streetAddress}</li>
+          <li>{business.address.addressLocality}, {business.address.addressRegion} {business.address.postalCode}</li>
+          <li style="margin-top: 0.75rem;">
+            <a href={`tel:${business.phone}`}>{business.phoneFormatted}</a>
+          </li>
+          {business.openingHours.map(h => (
+            <li>{h.days}: {h.opens} – {h.closes}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; {year} Ottawa Luxury Mattress. All rights reserved.</span>
+      <span>{business.address.addressLocality}, {business.address.addressRegion}</span>
+    </div>
+  </div>
+</footer>

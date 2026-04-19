@@ -1,0 +1,451 @@
+---
+import Base from '../layouts/Base.astro';
+import business from '../data/business.json';
+
+const variants = [
+  {
+    id: 'soft',
+    name: 'Beaumont Soft',
+    firmness: 'Soft',
+    ticking: 'Red ticking',
+    tickingColor: '#B5433B',
+    img: '/images/mattresses/beaumont-soft.webp',
+    desc: 'Natural latex at soft ILD with cotton pillow top. Deep pressure relief for shoulders and hips. Best for side sleepers, light sleepers, and those with joint sensitivity.',
+    ideal: ['Side sleepers', 'Joint pain relief', 'Plush feel preference'],
+  },
+  {
+    id: 'medium',
+    name: 'Beaumont Medium',
+    firmness: 'Medium',
+    ticking: 'Blue ticking',
+    tickingColor: '#2B4B82',
+    img: '/images/mattresses/beaumont-medium.webp',
+    desc: 'The most versatile build. Natural latex at medium ILD balances support and pressure relief. Comfortable for back, side, and combination sleepers.',
+    ideal: ['Back sleepers', 'Combination sleepers', 'Couples with similar preferences'],
+  },
+  {
+    id: 'firm',
+    name: 'Beaumont Firm',
+    firmness: 'Firm',
+    ticking: 'Green ticking',
+    tickingColor: '#4E7260',
+    img: '/images/mattresses/beaumont-firm.webp',
+    desc: 'Natural latex at firm ILD. Strong support with the responsive feel only real latex provides. Good for back and stomach sleepers, or those who simply prefer firm.',
+    ideal: ['Stomach sleepers', 'Back sleepers', 'Firm feel preference'],
+  },
+  {
+    id: 'extra-firm',
+    name: 'Beaumont Extra Firm',
+    firmness: 'Extra Firm',
+    ticking: 'Black ticking',
+    tickingColor: '#1A1A1A',
+    img: '/images/mattresses/beaumont-extra-firm.webp',
+    desc: 'Natural latex at high ILD. Maximum support for those who want minimal give, or as a dense foundation beneath a softer comfort layer.',
+    ideal: ['Stomach sleepers', 'Heavyweight support', 'Minimal give preference'],
+    comingSoon: false,
+  },
+];
+
+const specs = [
+  { label: 'Core material', value: 'Natural latex (Talalay or Dunlop) or pocket coil innerspring' },
+  { label: 'Comfort layers', value: 'Natural cotton batting, wool option, removable cotton pillow top' },
+  { label: 'Ticking', value: 'French-stripe cotton in four colorways (Red, Blue, Green, Black)' },
+  { label: 'Construction', value: 'Bun-tufted top, flippable, zipper-removable pillow top' },
+  { label: 'Standard thickness', value: '12" (custom thicknesses available)' },
+  { label: 'Sizes', value: 'Twin, Double, Queen, Split Queen, King, or any custom dimension' },
+  { label: 'Split options', value: 'Split Queen and Split King available, with different firmness on each side' },
+  { label: 'Lifespan', value: '25+ years with natural latex core' },
+  { label: 'Price range', value: '$1,200 – $6,000 CAD depending on size and specification' },
+];
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProductCollection",
+  "name": "Beaumont Collection",
+  "description": "Fully custom natural latex mattresses handcrafted by Mennonite artisans in South Ontario. Custom size, firmness, and construction. Available in four firmness levels and four ticking colorways.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Ottawa Luxury Mattress"
+  },
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "CAD",
+    "lowPrice": "1200",
+    "highPrice": "6000",
+    "offerCount": "4"
+  }
+};
+---
+
+<Base
+  title="Beaumont Collection | Custom Natural Latex Mattresses | Ottawa Mattress"
+  description="The Beaumont Collection: four firmness levels, fully custom size and construction. Natural latex, cotton ticking, handcrafted in South Ontario. $1,200 to $6,000 CAD. Ottawa's custom mattress maker."
+  schema={productSchema}
+>
+
+  <section class="page-header">
+    <div class="container">
+      <p class="eyebrow">Beaumont Collection by Ottawa Luxury Mattress</p>
+      <h1>The Collection</h1>
+      <p>
+        One mattress, four firmness levels, infinite configurations.
+        Every Beaumont is built to your exact specification: size, firmness, layers, split options.
+      </p>
+    </div>
+  </section>
+
+  <!-- Variants -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="variants">
+        {variants.map((v, i) => (
+          <div class={`variant ${v.comingSoon ? 'variant--soon' : ''}`} id={v.id}>
+            <div class={`variant__image ${!v.img ? 'variant__image--placeholder' : ''}`}>
+              {v.img
+                ? <img src={v.img} alt={`${v.name}, ${v.ticking}`} width="540" height="540" loading={i < 2 ? 'eager' : 'lazy'} />
+                : <div class="soon-placeholder">
+                    <span class="soon-swatch" style={`background: ${v.tickingColor}`}></span>
+                    <span>Black ticking, photo coming soon</span>
+                  </div>
+              }
+              {v.comingSoon && <div class="variant__badge">Coming Soon</div>}
+            </div>
+            <div class="variant__body">
+              <div class="variant__meta">
+                <span class="variant__swatch" style={`background: ${v.tickingColor}`}></span>
+                <span class="variant__ticking">{v.ticking}</span>
+                <span class="variant__firmness">{v.firmness}</span>
+              </div>
+              <h2>{v.name}</h2>
+              <p class="variant__desc">{v.desc}</p>
+              <div class="variant__ideal">
+                <h4>Ideal for</h4>
+                <ul>
+                  {v.ideal.map(item => <li>{item}</li>)}
+                </ul>
+              </div>
+              {!v.comingSoon && (
+                <div class="variant__actions">
+                  <a href={`tel:${business.phone}`} class="btn btn-primary">Call to Order</a>
+                  <a href="/contact/" class="btn btn-outline">Visit the Showroom</a>
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Full specs -->
+  <section class="section section--cream-dark">
+    <div class="container">
+      <div class="specs-wrap">
+        <div class="specs-header">
+          <h2>What you're getting</h2>
+          <p class="text-muted">
+            Every Beaumont is built from scratch. These are the standard specs. Everything can be adjusted on request..
+          </p>
+        </div>
+        <dl class="specs-table">
+          {specs.map(s => (
+            <div class="specs-row">
+              <dt>{s.label}</dt>
+              <dd>{s.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- Craft section -->
+  <section class="section section--navy">
+    <div class="container craft">
+      <div class="craft__text">
+        <h2>Built by hand in South Ontario</h2>
+        <p>
+          Every Beaumont mattress is made by Mennonite craftspeople who have been building
+          mattresses and furniture their entire lives. This is generational skill, not a
+          factory floor or a warehouse assembly line.
+        </p>
+        <p>
+          We specify every detail. They build it exactly. Then we deliver it to Ottawa.
+        </p>
+        <a href="/our-story/" class="btn btn-outline-cream">Our Story</a>
+      </div>
+      <div class="craft__callout">
+        <blockquote>
+          "Natural latex is the only mattress material that gets better with age rather than worse.
+          It doesn't compress, doesn't off-gas, and doesn't need replacing every decade."
+        </blockquote>
+        <p class="craft__callout-attr">Ottawa Luxury Mattress</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section section--white text-center">
+    <div class="container" style="max-width: 620px;">
+      <h2>Come in and feel the difference</h2>
+      <p class="text-muted" style="margin: 1rem 0 2rem;">
+        We have demonstration mattresses in the showroom. Lie on a few, ask questions,
+        and we'll give you an exact quote before you commit to anything.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href={`tel:${business.phone}`} class="btn btn-primary">{business.phoneFormatted}</a>
+        <a href="/contact/" class="btn btn-outline">Showroom Hours and Directions</a>
+      </div>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  .eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin-bottom: 1rem;
+    font-style: italic;
+    color: var(--color-cream);
+  }
+
+  .page-header p {
+    max-width: 640px;
+  }
+
+  /* Variants */
+  .variants {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+  }
+
+  .variant {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .variant:nth-child(even) .variant__image { order: 2; }
+  .variant:nth-child(even) .variant__body { order: 1; }
+
+  .variant__image {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+  }
+
+  .variant__image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    padding: 1.5rem;
+    object-fit: contain;
+  }
+
+  .variant--soon {
+    opacity: 0.75;
+  }
+
+  .variant__badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--color-navy);
+    color: var(--color-cream);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+  }
+
+  .soon-placeholder {
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background: var(--color-cream-dark);
+    color: var(--color-text-muted);
+    font-style: italic;
+    font-size: 0.85rem;
+  }
+
+  .soon-swatch {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: block;
+  }
+
+  .variant__image--placeholder {
+    aspect-ratio: 1;
+  }
+
+  .variant__meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .variant__swatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .variant__ticking {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+  }
+
+  .variant__firmness {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    border-left: 1px solid var(--color-border);
+    padding-left: 0.75rem;
+  }
+
+  .variant h2 { margin-bottom: 1rem; }
+
+  .variant__desc {
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .variant__ideal {
+    margin-bottom: 1.75rem;
+  }
+
+  .variant__ideal h4 {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .variant__ideal ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .variant__ideal li {
+    font-size: 0.82rem;
+    background: var(--color-cream-dark);
+    padding: 0.25rem 0.65rem;
+    border-radius: 20px;
+    color: var(--color-charcoal);
+  }
+
+  .variant__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* Specs */
+  .specs-wrap {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .specs-header h2 { margin-bottom: 0.75rem; }
+
+  .specs-table {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .specs-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 0.9rem;
+  }
+
+  .specs-row:first-child { border-top: 1px solid var(--color-border); }
+
+  dt {
+    font-weight: 500;
+    color: var(--color-charcoal);
+  }
+
+  dd {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  /* Craft */
+  .craft {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .craft h2 { color: var(--color-cream); margin-bottom: 1rem; }
+  .craft p { opacity: 0.82; line-height: 1.75; margin-bottom: 1.25rem; }
+
+  .craft__callout {
+    border-left: 2px solid rgba(247, 243, 236, 0.3);
+    padding-left: 2rem;
+  }
+
+  .craft__callout blockquote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.15rem;
+    line-height: 1.65;
+    opacity: 0.9;
+    margin-bottom: 1rem;
+  }
+
+  .craft__callout-attr {
+    font-size: 0.8rem;
+    opacity: 0.5;
+    margin: 0;
+  }
+
+  @media (max-width: 860px) {
+    .variant,
+    .variant:nth-child(even) .variant__image,
+    .variant:nth-child(even) .variant__body {
+      grid-template-columns: 1fr;
+      order: unset;
+    }
+
+    .variant { gap: 2rem; }
+
+    .specs-wrap,
+    .craft {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>

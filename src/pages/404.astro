@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Page Not Found | Ottawa Mattress"
+  description="The page you're looking for doesn't exist."
+>
+  <section class="not-found">
+    <div class="container text-center">
+      <p class="not-found__code">404</p>
+      <h1>Page not found</h1>
+      <p class="text-muted" style="margin: 1rem 0 2rem; max-width: 420px; margin-left: auto; margin-right: auto;">
+        This page doesn't exist. Try the collection, or come find us in person.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="/" class="btn btn-primary">Go Home</a>
+        <a href="/beaumont-collection/" class="btn btn-outline">View Collection</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .not-found {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    padding: 5rem 0;
+  }
+
+  .not-found__code {
+    font-family: var(--font-display);
+    font-size: 6rem;
+    color: var(--color-navy);
+    opacity: 0.12;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .not-found h1 { margin-bottom: 0; }
+</style>

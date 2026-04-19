@@ -1,0 +1,50 @@
+---
+const currentPath = Astro.url.pathname;
+const isActive = (path: string) => currentPath === path || currentPath.startsWith(path + '/');
+
+const links = [
+  { href: '/beaumont-collection/', label: 'Collection' },
+{ href: '/sleep-guide/', label: 'Sleep Guide' },
+  { href: '/our-story/', label: 'Our Story' },
+];
+---
+
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-wordmark" aria-label="Ottawa Mattress home">
+      <span class="nav-wordmark__primary">Ottawa Mattress</span>
+      <span class="nav-wordmark__sub">Beaumont Collection</span>
+    </a>
+
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" id="nav-toggle">
+      <svg width="22" height="16" viewBox="0 0 22 16" fill="none" aria-hidden="true">
+        <rect y="0" width="22" height="2" fill="currentColor"/>
+        <rect y="7" width="22" height="2" fill="currentColor"/>
+        <rect y="14" width="22" height="2" fill="currentColor"/>
+      </svg>
+    </button>
+
+    <ul class="nav-links" id="nav-links" role="list">
+      {links.map(link => (
+        <li>
+          <a href={link.href} aria-current={isActive(link.href) ? 'page' : undefined}>
+            {link.label}
+          </a>
+        </li>
+      ))}
+      <li class="nav-cta">
+        <a href="/contact/">Visit Us</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const links = document.getElementById('nav-links');
+
+  toggle?.addEventListener('click', () => {
+    const open = links?.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+</script>

@@ -1,0 +1,391 @@
+---
+import Base from '../layouts/Base.astro';
+import business from '../data/business.json';
+
+const faq = [
+  {
+    q: "What firmness is best for side sleepers?",
+    a: "Side sleepers generally do best with a soft to medium mattress. The hips and shoulders need to sink in slightly so the spine stays neutral. A mattress that's too firm creates pressure points at those joints. Natural latex at soft or medium ILD works very well because it provides pressure relief without the slow-response stuck feeling of memory foam."
+  },
+  {
+    q: "What firmness is best for back sleepers?",
+    a: "Back sleepers generally do best with a medium to firm mattress. The lumbar spine needs support. If the mattress is too soft, the lower back sags into it. Natural latex at medium or firm ILD supports the lumbar curve while still allowing some contouring at the shoulders and hips."
+  },
+  {
+    q: "What firmness is best for stomach sleepers?",
+    a: "Stomach sleepers need firm to extra firm support. Sleeping face-down puts the spine into extension. If the mattress is too soft, the hips sink and the lumbar spine overextends. A firm natural latex core keeps the hips level with the shoulders and reduces lower back strain."
+  },
+  {
+    q: "What if my partner and I prefer different firmness levels?",
+    a: "We build split mattresses: two separate cores in the same ticking. A split queen gives each person 30 inches of their own firmness; a split king gives each person 38 inches. There's no compromise and no motion transfer between sides."
+  },
+  {
+    q: "Is natural latex better than memory foam?",
+    a: "For most people, yes. Natural latex responds immediately to movement (no stuck feeling), sleeps cooler, lasts 25+ years, and doesn't off-gas. Memory foam contours well but retains heat, responds slowly, and compresses over time. The main advantage memory foam has is lower cost, which natural latex from us largely eliminates."
+  },
+  {
+    q: "What is ILD and how does it relate to firmness?",
+    a: "ILD (Indentation Load Deflection) is the industry measure of foam firmness: how many pounds it takes to compress a 4-inch sample by 25%. Low ILD (14-19) is soft. Medium (20-28) is medium. Firm (30-36) is firm. Extra firm (36+) is extra firm. We specify the ILD of your latex core to your preference."
+  },
+  {
+    q: "Can I get a mattress for an unusual bed frame size?",
+    a: "Yes. We build to any dimension: antique frames, RV mattresses, boat cabins, custom platform beds. Measure your frame and we'll build to it exactly."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faq.map(item => ({
+    "@type": "Question",
+    "name": item.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.a
+    }
+  }))
+};
+
+const positions = [
+  {
+    id: 'side',
+    label: 'Side Sleeper',
+    icon: '↙',
+    recommended: ['Soft', 'Medium'],
+    color: 'var(--color-soft)',
+    heading: 'Side sleepers need pressure relief',
+    body: [
+      "When you sleep on your side, your shoulder and hip are the widest points of contact. If the mattress is too firm, those joints can't sink in, creating pressure points that lead to numbness, shoulder pain, and restless sleep.",
+      "The goal: hips and shoulders sink in just enough that the spine stays horizontal and neutral. A soft to medium latex core does this without the heat retention of memory foam.",
+      "If you have broad shoulders relative to your hips (common in men), a slightly softer feel helps. If you curl up significantly, a removable pillow top adds immediate surface softness without changing the core."
+    ],
+    collectionHref: '/beaumont-collection/#soft',
+    collectionLabel: 'Beaumont Soft',
+  },
+  {
+    id: 'back',
+    label: 'Back Sleeper',
+    icon: '↑',
+    recommended: ['Medium', 'Firm'],
+    color: 'var(--color-medium)',
+    heading: 'Back sleepers need lumbar support',
+    body: [
+      "Back sleeping is the most spine-neutral position, but only if the mattress supports the natural lumbar curve without sagging. Too soft and the lower back drops; too firm and the lumbar is unsupported in its natural arch.",
+      "Medium to firm natural latex is ideal. It supports the lumbar curve while allowing slight contouring at the shoulders and hips. The responsive nature of latex means you never feel sunk in.",
+      "If you wake with lower back stiffness on your current mattress, firmness is usually the first thing to check. Going to medium or firm resolves this for most back sleepers."
+    ],
+    collectionHref: '/beaumont-collection/#medium',
+    collectionLabel: 'Beaumont Medium or Firm',
+  },
+  {
+    id: 'stomach',
+    label: 'Stomach Sleeper',
+    icon: '↓',
+    recommended: ['Firm', 'Extra Firm'],
+    color: 'var(--color-firm)',
+    heading: 'Stomach sleepers need a firm, flat surface',
+    body: [
+      "Stomach sleeping places the spine in extension. The lower back is already arched. If the mattress lets the hips sink further, the lumbar overextends and you wake with back pain.",
+      "Firm to extra firm support keeps the hips level with the shoulders. This is the most important firmness relationship for stomach sleepers. Even 2-3 inches of soft comfort layer can undo this if you're a true stomach sleeper.",
+      "We generally recommend a firm or extra firm natural latex core with no pillow top. If you find a firm surface uncomfortable, we can add a thin cotton batting layer that doesn't significantly change the support."
+    ],
+    collectionHref: '/beaumont-collection/#firm',
+    collectionLabel: 'Beaumont Firm or Extra Firm',
+  },
+  {
+    id: 'combo',
+    label: 'Combination Sleeper',
+    icon: '↻',
+    recommended: ['Medium'],
+    color: 'var(--color-navy)',
+    heading: 'Combination sleepers need responsive support',
+    body: [
+      "If you move between side, back, and stomach during the night, you need a mattress that transitions well across positions. Too soft and you sink too much on your back; too firm and your shoulders suffer on your side.",
+      "Medium is the practical answer for most combination sleepers. Natural latex is especially good here because it responds immediately to movement. There's no lag or quicksand effect when you shift position.",
+      "If one sleep position dominates (you start on your back but end on your side), lean slightly toward what that position needs. If it's truly balanced, medium is correct."
+    ],
+    collectionHref: '/beaumont-collection/#medium',
+    collectionLabel: 'Beaumont Medium',
+  },
+  {
+    id: 'couples',
+    label: 'Couples with Different Needs',
+    icon: '⟷',
+    recommended: ['Split'],
+    color: 'var(--color-navy)',
+    heading: 'Stop compromising on sleep',
+    body: [
+      "One partner sleeps on their side and needs soft; the other is a back sleeper who needs firm. The standard solution of finding a medium satisfies neither person.",
+      "We build split mattresses. A split queen (30 + 30 inches) or split king (38 + 38 inches) is two separate latex cores inside one piece of ticking. Each side is built to its own specification. No compromise. No motion transfer.",
+      "The price is the same as a standard mattress in that size. It's built the same way, with two cores instead of one."
+    ],
+    collectionHref: '/beaumont-collection/',
+    collectionLabel: 'View split options',
+  },
+];
+---
+
+<Base
+  title="Mattress Firmness Guide: What Sleep Position Needs What Mattress | Ottawa Mattress"
+  description="Side sleepers, back sleepers, stomach sleepers, couples: what firmness does each sleep position actually need? Natural latex explained. Ottawa Mattress sleep guide."
+  schema={faqSchema}
+>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>Which Mattress is Right for You?</h1>
+      <p>
+        The right firmness depends on how you sleep, not a sales label.
+        Here's what each sleep position actually needs.
+      </p>
+    </div>
+  </section>
+
+  <!-- Position guide -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="positions">
+        {positions.map(pos => (
+          <div class="position" id={pos.id}>
+            <div class="position__header">
+              <div>
+                <h2>{pos.label}</h2>
+                <div class="position__tags">
+                  {pos.recommended.map(r => (
+                    <span class="tag" style={`--tag-color: ${pos.color}`}>{r}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div class="position__body">
+              <h3>{pos.heading}</h3>
+              {pos.body.map(para => <p>{para}</p>)}
+              <a href={pos.collectionHref} class="position__link">
+                {pos.collectionLabel} &rarr;
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Latex vs. foam -->
+  <section class="section section--navy">
+    <div class="container latex-section">
+      <div class="latex-text">
+        <h2>Why natural latex changes the equation</h2>
+        <p>
+          Most firmness advice online is calibrated to synthetic foam. Natural latex
+          behaves differently and better in ways that matter for how you actually sleep.
+        </p>
+        <div class="latex-comparisons">
+          <div class="latex-compare">
+            <h4>Responsiveness</h4>
+            <p>
+              Latex responds to movement instantly. Memory foam has lag: you sink in
+              and it holds you there. For combination sleepers especially, this is the
+              difference between waking up and not waking up when you shift.
+            </p>
+          </div>
+          <div class="latex-compare">
+            <h4>Temperature</h4>
+            <p>
+              Natural latex is an open-cell foam, so air moves through it. Memory foam
+              retains body heat because it uses that heat to soften. If you sleep hot,
+              latex is significantly better.
+            </p>
+          </div>
+          <div class="latex-compare">
+            <h4>Lifespan</h4>
+            <p>
+              Synthetic foam compresses permanently over years. A 12-inch memory foam mattress
+              is effectively 9-10 inches after five years. Natural latex maintains its ILD for
+              25+ years. The mattress you buy is the mattress you sleep on a decade later.
+            </p>
+          </div>
+          <div class="latex-compare">
+            <h4>Off-gassing</h4>
+            <p>
+              Memory foam off-gases volatile organic compounds. That "new mattress smell"
+              is VOCs. Natural latex doesn't. If you're chemically sensitive or have
+              respiratory concerns, this matters.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--cream-dark">
+    <div class="container" style="max-width: 760px;">
+      <h2 style="margin-bottom: 2rem;">Common questions</h2>
+      <div class="faq-list">
+        {faq.map(item => (
+          <details class="faq-item">
+            <summary>{item.q}</summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--white text-center">
+    <div class="container" style="max-width: 580px;">
+      <h2>Still not sure?</h2>
+      <p class="text-muted" style="margin: 1rem 0 2rem;">
+        Come in. Lie on a few different configurations. We'll talk through your sleep habits
+        and point you to the right spec. No pressure, no script.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href={`tel:${business.phone}`} class="btn btn-primary">{business.phoneFormatted}</a>
+        <a href="/contact/" class="btn btn-outline">Visit the Showroom</a>
+      </div>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  .positions {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .position {
+    border-top: 1px solid var(--color-border);
+    padding-top: 3rem;
+  }
+
+  .position:first-child { border-top: none; padding-top: 0; }
+
+  .position__header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .position__header h2 { margin-bottom: 0.5rem; }
+
+  .position__tags {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    background: var(--tag-color, var(--color-navy));
+    color: white;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .position__body {
+    max-width: 720px;
+  }
+
+  .position__body h3 {
+    margin-bottom: 1rem;
+    font-size: 1.15rem;
+  }
+
+  .position__body p {
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+    line-height: 1.75;
+    font-size: 0.97rem;
+  }
+
+  .position__link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-navy);
+    border-bottom: 1px solid var(--color-navy);
+    padding-bottom: 1px;
+    transition: opacity 0.15s;
+  }
+
+  .position__link:hover { opacity: 0.65; }
+
+  /* Latex section */
+  .latex-section h2 { color: var(--color-cream); margin-bottom: 1.25rem; }
+  .latex-text > p { opacity: 0.8; line-height: 1.75; margin-bottom: 2rem; max-width: 660px; }
+
+  .latex-comparisons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .latex-compare {
+    border-left: 2px solid rgba(247, 243, 236, 0.2);
+    padding-left: 1.25rem;
+  }
+
+  .latex-compare h4 {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.55;
+    margin-bottom: 0.5rem;
+  }
+
+  .latex-compare p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    line-height: 1.7;
+  }
+
+  /* FAQ */
+  .faq-item {
+    border-bottom: 1px solid var(--color-border);
+    padding: 1.1rem 0;
+  }
+
+  .faq-item summary {
+    font-weight: 500;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.98rem;
+    gap: 1rem;
+  }
+
+  .faq-item summary::-webkit-details-marker { display: none; }
+
+  .faq-item summary::after {
+    content: '+';
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--color-navy);
+    flex-shrink: 0;
+  }
+
+  .faq-item[open] summary::after { content: '-'; }
+
+  .faq-item p {
+    margin-top: 0.75rem;
+    font-size: 0.92rem;
+    color: var(--color-text-muted);
+    line-height: 1.75;
+  }
+
+  @media (max-width: 700px) {
+    .position__body { padding-left: 0; }
+    .latex-comparisons { grid-template-columns: 1fr; }
+  }
+</style>

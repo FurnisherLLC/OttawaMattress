@@ -1,0 +1,480 @@
+---
+import Base from '../layouts/Base.astro';
+import business from '../data/business.json';
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "FurnitureStore",
+  "name": business.name,
+  "alternateName": business.dba,
+  "url": business.url,
+  "telephone": business.phone,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": business.address.streetAddress,
+    "addressLocality": business.address.addressLocality,
+    "addressRegion": business.address.addressRegion,
+    "postalCode": business.address.postalCode,
+    "addressCountry": business.address.addressCountry
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": business.geo.latitude,
+    "longitude": business.geo.longitude
+  },
+  "openingHoursSpecification": [
+    ...business.openingHours.map(h => ({
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": h.schemaDays,
+      "opens": h.schemaOpens,
+      "closes": h.schemaCloses
+    }))
+  ],
+  "priceRange": business.priceRange,
+  "description": "Ottawa's custom natural latex mattress maker. The Beaumont Collection: handcrafted by Mennonite artisans, fully custom size and firmness, from $1,200 CAD."
+};
+
+const variants = [
+  {
+    name: 'Beaumont Soft',
+    firmness: 'Soft',
+    ticking: 'Red ticking',
+    color: 'var(--color-soft)',
+    img: '/images/mattresses/beaumont-soft.webp',
+    desc: 'Deep pressure relief. Natural latex at soft ILD with cotton pillow top. Best for side sleepers and those with joint sensitivity.',
+  },
+  {
+    name: 'Beaumont Medium',
+    firmness: 'Medium',
+    ticking: 'Blue ticking',
+    color: 'var(--color-medium)',
+    img: '/images/mattresses/beaumont-medium.webp',
+    desc: 'The most versatile build. Balances support and comfort for back, side, and combination sleepers.',
+  },
+  {
+    name: 'Beaumont Firm',
+    firmness: 'Firm',
+    ticking: 'Green ticking',
+    color: 'var(--color-firm)',
+    img: '/images/mattresses/beaumont-firm.webp',
+    desc: 'Strong support with natural latex responsiveness. For back and stomach sleepers, or those who prefer a firm feel.',
+  },
+];
+---
+
+<Base
+  title="Ottawa Mattress | Custom Natural Latex Mattresses | Beaumont Collection"
+  description="Ottawa's custom mattress maker. Handcrafted natural latex, fully custom size and firmness, built by Mennonite artisans in South Ontario. Beaumont Collection, from $1,200 CAD. Visit our Nepean showroom."
+  schema={localBusinessSchema}
+>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__image-wrap">
+      <img
+        src="/images/hero.webp"
+        srcset="/images/hero.webp 1440w, /images/hero-2x.webp 2624w"
+        sizes="100vw"
+        alt="Beaumont Collection mattress in a French provincial bedroom overlooking a château and lavender fields"
+        width="1440"
+        height="896"
+        loading="eager"
+        fetchpriority="high"
+        class="hero__image"
+      />
+      <div class="hero__gradient" aria-hidden="true"></div>
+    </div>
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <p class="hero__eyebrow">Beaumont Collection by Ottawa Luxury Mattress</p>
+        <h1>Ottawa's Custom Mattress Maker</h1>
+        <p class="hero__sub">
+          Natural latex and cotton hand-crafted by Mennonite artisans.
+          Fully custom: your size, your firmness, your mattress. Without the exorbitant markup.
+        </p>
+        <p class="hero__price">{business.priceRange}</p>
+        <div class="hero__actions">
+          <a href="/beaumont-collection/" class="btn btn-outline-cream">View the Collection</a>
+          <a href={`tel:${business.phone}`} class="btn btn-outline-cream">{business.phoneFormatted}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Value props -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="props-grid">
+        <div class="prop">
+          <div class="prop__icon">25+</div>
+          <h3>Year Lifespan</h3>
+          <p>Natural latex outlasts synthetic foam by decades. No sagging, no off-gassing, no replacement cycle.</p>
+        </div>
+        <div class="prop">
+          <div class="prop__icon">∞</div>
+          <h3>Fully Custom</h3>
+          <p>Size, firmness, construction, ticking: everything is specifiable. Split firmness for couples. Any dimension including non-standard frames.</p>
+        </div>
+        <div class="prop">
+          <div class="prop__icon">↺</div>
+          <h3>Flippable</h3>
+          <p>Zipper-removable pillow top. Flip and rotate freely. Built to be used hard and last.</p>
+        </div>
+        <div class="prop">
+          <div class="prop__icon">$</div>
+          <h3>Honest Pricing</h3>
+          <p>From $1,200 CAD. A comparable custom build elsewhere costs two to three times as much. No middlemen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Collection -->
+  <section class="section section--cream-dark">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2>The Beaumont Collection</h2>
+        <p class="text-muted">Three ticking colorways, four firmness levels. Every mattress built to order.</p>
+      </div>
+      <div class="collection-grid">
+        {variants.map(v => (
+          <a href="/beaumont-collection/" class="collection-card">
+            <div class="collection-card__img">
+              <img src={v.img} alt={v.name} width="500" height="500" loading="lazy" />
+            </div>
+            <div class="collection-card__body">
+              <div class="collection-card__swatch" style={`background: ${v.color}`}></div>
+              <div>
+                <h3>{v.name}</h3>
+                <p>{v.desc}</p>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="text-center" style="margin-top: 2.5rem;">
+        <a href="/beaumont-collection/" class="btn btn-outline">See the Full Collection</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Showroom CTA -->
+  <section class="section section--navy text-center">
+    <div class="container" style="max-width: 620px;">
+      <h2>Not sure what you need?</h2>
+      <p style="opacity: 0.82; line-height: 1.75; margin: 1rem 0 2rem;">
+        Most people aren't. That's what the showroom is for. Come in, lie on a few
+        different configurations, and we'll point you to the right spec. No appointment needed.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href={`tel:${business.phone}`} class="btn btn-outline-cream">{business.phoneFormatted}</a>
+        <a href="/contact/" class="btn btn-outline-cream">Showroom Hours</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sleep guide teaser -->
+  <section class="section section--white">
+    <div class="container sleep-teaser">
+      <div class="sleep-teaser__content text-center">
+        <h2>Not sure what firmness you need?</h2>
+        <p class="text-muted" style="max-width: 560px; margin: 1rem auto 2rem;">
+          The right firmness depends on how you sleep. Our guide explains what back, side,
+          stomach, and combination sleepers actually need, and why natural latex changes the equation.
+        </p>
+        <a href="/sleep-guide/" class="btn btn-outline">Read the Sleep Guide</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location CTA -->
+  <section class="section section--cream-dark">
+    <div class="container location-cta">
+      <div class="location-cta__text">
+        <h2>Come in and feel the difference</h2>
+        <p>
+          Nothing replaces lying on the actual mattress. Visit our showroom in Nepean.
+          No appointment needed during business hours.
+        </p>
+        <address class="location-cta__address">
+          {business.address.streetAddress}<br />
+          {business.address.addressLocality}, {business.address.addressRegion} {business.address.postalCode}
+        </address>
+        <div class="location-cta__hours">
+          {business.openingHours.map(h => (
+            <div class="hour-row">
+              <span>{h.days}</span>
+              <span>{h.opens} – {h.closes}</span>
+            </div>
+          ))}
+        </div>
+        <div class="location-cta__actions">
+          <a href={`tel:${business.phone}`} class="btn btn-primary">{business.phoneFormatted}</a>
+          <a href="/contact/" class="btn btn-outline">Get Directions</a>
+        </div>
+      </div>
+      <div class="location-cta__map">
+        <iframe
+          title="Ottawa Mattress: 107 Colonnade Rd S #7, Nepean"
+          width="100%"
+          height="340"
+          style="border:0; display:block;"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://maps.google.com/maps?q=107+Colonnade+Rd+S,+Nepean,+ON+K2E+7M3,+Canada&output=embed&z=16"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  /* Hero */
+  .hero {
+    position: relative;
+    color: var(--color-cream);
+    overflow: hidden;
+    min-height: 580px;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero__image-wrap {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    display: block;
+  }
+
+  .hero__gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      100deg,
+      rgba(15, 29, 52, 0.88) 0%,
+      rgba(15, 29, 52, 0.72) 42%,
+      rgba(15, 29, 52, 0.18) 68%,
+      transparent 100%
+    );
+  }
+
+  .hero__inner {
+    position: relative;
+    z-index: 1;
+    padding: 5rem 0 4.5rem;
+    max-width: 580px;
+  }
+
+  .hero__eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin-bottom: 1.25rem;
+    font-style: italic;
+  }
+
+  .hero h1 {
+    color: var(--color-cream);
+    margin-bottom: 1.25rem;
+  }
+
+  .hero__sub {
+    font-size: 1.05rem;
+    opacity: 0.88;
+    line-height: 1.75;
+    margin-bottom: 1rem;
+  }
+
+  .hero__price {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    opacity: 0.65;
+    margin-bottom: 2rem;
+  }
+
+  .hero__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* Value props */
+  .props-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .prop {
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+
+  .prop__icon {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--color-navy);
+    margin-bottom: 1rem;
+    opacity: 0.7;
+  }
+
+  .prop h3 { margin-bottom: 0.5rem; }
+
+  .prop p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+  }
+
+  /* Collection */
+  .section-header { margin-bottom: 2.5rem; }
+  .section-header p { margin-top: 0.5rem; }
+
+  .collection-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .collection-card {
+    display: block;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .collection-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(27, 45, 79, 0.12);
+  }
+
+  .collection-card__img {
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: var(--color-white);
+  }
+
+  .collection-card__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 1rem;
+    transition: transform 0.3s;
+  }
+
+  .collection-card:hover .collection-card__img img {
+    transform: scale(1.03);
+  }
+
+  .collection-card__body {
+    padding: 1.25rem;
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .collection-card__swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 0.35rem;
+  }
+
+  .collection-card__body h3 {
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .collection-card__body p {
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+    line-height: 1.55;
+  }
+
+  /* Sleep teaser */
+  .sleep-teaser { padding: 1rem 0; }
+
+  /* Location CTA */
+  .location-cta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .location-cta h2 { margin-bottom: 1rem; }
+  .location-cta > .location-cta__text > p { margin-bottom: 1.25rem; color: var(--color-text-muted); }
+
+  .location-cta__address {
+    font-style: normal;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    color: var(--color-text-muted);
+  }
+
+  .location-cta__hours {
+    margin-bottom: 1.75rem;
+  }
+
+  .hour-row {
+    display: flex;
+    justify-content: space-between;
+    max-width: 260px;
+    padding: 0.3rem 0;
+    font-size: 0.875rem;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+  }
+
+  .location-cta__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .location-cta__map iframe {
+    border-radius: var(--radius);
+  }
+
+  @media (max-width: 900px) {
+    .hero {
+      min-height: 460px;
+    }
+
+    .hero__gradient {
+      background: linear-gradient(
+        180deg,
+        rgba(15, 29, 52, 0.75) 0%,
+        rgba(15, 29, 52, 0.6) 60%,
+        rgba(15, 29, 52, 0.3) 100%
+      );
+    }
+
+    .hero__inner { padding: 3.5rem 0 3rem; }
+
+    .props-grid { grid-template-columns: repeat(2, 1fr); }
+    .collection-grid { grid-template-columns: 1fr 1fr; }
+    .location-cta { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 560px) {
+    .hero { min-height: 400px; }
+    .props-grid { grid-template-columns: 1fr; }
+    .collection-grid { grid-template-columns: 1fr; }
+  }
+</style>
