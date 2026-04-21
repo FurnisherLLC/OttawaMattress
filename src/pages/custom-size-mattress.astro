@@ -1,0 +1,254 @@
+---
+import Base from '../layouts/Base.astro';
+import business from '../data/business.json';
+
+const faq = [
+  {
+    q: "What's the smallest and largest mattress you can build?",
+    a: "We can build down to small crib and daybed sizes and up to California King and beyond. There's no practical upper limit on a custom build. If you have a specific dimension in mind, call us and we'll confirm it."
+  },
+  {
+    q: "Can you match an antique bed frame size?",
+    a: "Yes. Antique frames often use non-standard widths like 48 or 54 inches, and older full-size beds ran 54x75 rather than today's 54x80. Measure your frame and we'll build to it. The only thing that changes is the dimensions."
+  },
+  {
+    q: "Can you build a mattress for a Murphy bed?",
+    a: "Yes, but Murphy beds have a specific thickness requirement so the cabinet closes properly. Most require a mattress no thicker than 10 to 12 inches. Tell us the cabinet clearance and we'll build to it."
+  },
+  {
+    q: "What about unusual shapes, not just unusual sizes?",
+    a: "We can build non-rectangular shapes. The heart-shaped mattress is a real product we make. Rounded corners, trapezoidal shapes for angled platform beds, and other custom geometries are all possible. Bring a template or describe the shape."
+  },
+  {
+    q: "How long does a custom size mattress take?",
+    a: "About two weeks from point of order, same as any mattress we build. Custom size is not a special case for lead time. Most custom mattress builders run 4-8 weeks — our two-week turnaround is consistent across all builds."
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faq.map(item => ({
+    "@type": "Question",
+    "name": item.q,
+    "acceptedAnswer": { "@type": "Answer", "text": item.a }
+  }))
+};
+---
+
+<Base
+  title="Custom Size Mattress Ottawa | Any Dimension | Ottawa Mattress"
+  description="Custom size mattresses for antique frames, Murphy beds, platform beds, and any non-standard dimension. Natural latex, built to your exact measurements in two weeks. Ottawa Mattress."
+  schema={schema}
+>
+
+  <section class="page-header">
+    <div class="container">
+      <p class="page-eyebrow">Ottawa Mattress</p>
+      <h1>Custom Size Mattresses</h1>
+      <p>Antique frames, unusual dimensions, Murphy beds, non-rectangular shapes. If it doesn't exist in a catalog, we build it to your exact specification.</p>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="container split">
+      <div class="split__image">
+        <img src="/images/specialty/heart.webp" alt="Heart-shaped custom mattress with bun-tufted pillow top" width="800" height="800" loading="eager" />
+      </div>
+      <div class="split__text">
+        <h2>If you have the dimensions, we can build it</h2>
+        <p>Standard mattress sizes exist because they're easy to manufacture at scale. They have nothing to do with the actual dimensions of your bed frame, your cabin, or your sleeping space.</p>
+        <p>Antique beds often ran 48 or 54 inches wide before today's Full size became standard. Platform beds get built to whatever dimension the designer chose. Daybed frames, trundle beds, and murphy cabinets all have their own constraints. And sometimes people just want something that doesn't exist off the shelf.</p>
+        <p>We've built hearts, rectangles with rounded corners, tapered wedges for angled walls, and everything in between. Bring the measurements or a template and we build to it.</p>
+        <div class="split__actions">
+          <a href={`tel:${business.phone}`} class="btn btn-primary">{business.phoneFormatted}</a>
+          <a href="/contact/" class="btn btn-outline">Showroom Hours</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cream-dark">
+    <div class="container">
+      <div class="examples-grid">
+        <div class="examples-header">
+          <h2>Common requests</h2>
+          <p class="text-muted">These are the most common reasons people call about a custom size. If yours isn't here, call anyway.</p>
+        </div>
+        <div class="examples-list">
+          <div class="example">
+            <h3>Antique bed frames</h3>
+            <p>Victorian, Edwardian, and mid-century frames rarely match modern sizes. We build to whatever your frame measures. Some antique frames also have unusual heights that require a specific mattress thickness.</p>
+          </div>
+          <div class="example">
+            <h3>Murphy beds</h3>
+            <p>Murphy bed cabinets have a maximum mattress thickness for the door to close. Most run 10 to 12 inches. Tell us the cabinet clearance and we'll build to fit, without compromising the mattress quality.</p>
+          </div>
+          <div class="example">
+            <h3>Platform and custom beds</h3>
+            <p>Custom platform beds, built-in sleeping niches, and architectural bed frames are often built to non-standard dimensions. Measure the platform and we build the mattress to match.</p>
+          </div>
+          <div class="example">
+            <h3>Daybeds and trundles</h3>
+            <p>Standard twin size is 38x80. Daybed frames often use 30x75 or 33x75. Trundle mattresses need to fit under the main bed. We build to whatever your frame actually requires.</p>
+          </div>
+          <div class="example">
+            <h3>Non-rectangular shapes</h3>
+            <p>Rounded corners, angled cuts for sloped ceilings, wedge shapes for platform beds built into corners. Bring a paper template of the sleeping surface and we'll build to it.</p>
+          </div>
+          <div class="example">
+            <h3>Split firmness in custom sizes</h3>
+            <p>Custom dimensions can still be built as split mattresses with different firmness on each side. Two cores, one ticking. Available in any custom size.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="container" style="max-width: 720px;">
+      <h2>How to order a custom size</h2>
+      <ol class="process-list">
+        <li>
+          <span class="process-num">1</span>
+          <div>
+            <strong>We handle the measuring.</strong> If you can bring the frame or describe the space, great. If not, we can send someone to you. For irregular shapes, a paper template is the most reliable approach — but we can sort that out together. Call first and we'll figure out the easiest approach.
+          </div>
+        </li>
+        <li>
+          <span class="process-num">2</span>
+          <div>
+            <strong>Choose your spec.</strong> Same three-layer construction as our Beaumont mattresses. Support layer is latex or coil. Firmness is Soft, Medium, Firm, or Extra Firm. Optional comfort layer. Custom size doesn't change any of this.
+          </div>
+        </li>
+        <li>
+          <span class="process-num">3</span>
+          <div>
+            <strong>Two weeks to delivery.</strong> That's our standard lead time from point of order, regardless of the size or shape. Most custom mattress builders run 4-8 weeks. We deliver within Ottawa, or pickup at the Nepean showroom.
+          </div>
+        </li>
+      </ol>
+      <div style="margin-top: 2rem;">
+        <a href={`tel:${business.phone}`} class="btn btn-primary">{business.phoneFormatted}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cream-dark">
+    <div class="container" style="max-width: 760px;">
+      <h2 style="margin-bottom: 2rem;">Common questions</h2>
+      <div class="faq-list">
+        {faq.map(item => (
+          <details class="faq-item">
+            <summary>{item.q}</summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--navy text-center">
+    <div class="container" style="max-width: 580px;">
+      <h2>Have a non-standard size?</h2>
+      <p style="opacity: 0.82; line-height: 1.75; margin: 1rem 0 2rem;">
+        Call with your dimensions or bring a template to the Nepean showroom. Two weeks from order to delivery within Ottawa.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href={`tel:${business.phone}`} class="btn btn-outline-cream">{business.phoneFormatted}</a>
+        <a href="/contact/" class="btn btn-outline-cream">Showroom Hours</a>
+      </div>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  .page-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin-bottom: 1rem;
+    color: var(--color-cream);
+    font-style: italic;
+  }
+
+  .page-header p { max-width: 580px; }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .split__image { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--color-border); }
+  .split__image img { width: 100%; height: auto; display: block; }
+  .split__text h2 { margin-bottom: 1rem; }
+  .split__text p { color: var(--color-text-muted); line-height: 1.75; margin-bottom: 1rem; font-size: 0.97rem; }
+  .split__actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.75rem; }
+
+  .examples-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .examples-header h2 { margin-bottom: 0.75rem; }
+  .examples-header p { font-size: 0.9rem; }
+
+  .examples-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .example h3 { font-size: 0.95rem; margin-bottom: 0.5rem; }
+  .example p { font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.7; margin: 0; }
+
+  .process-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    padding: 0;
+  }
+
+  .process-list li {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 1rem;
+    align-items: start;
+    font-size: 0.97rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+  }
+
+  .process-num {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--color-navy);
+    line-height: 1.1;
+    opacity: 0.35;
+  }
+
+  .process-list strong { color: var(--color-charcoal); }
+
+  .faq-item { border-bottom: 1px solid var(--color-border); padding: 1.1rem 0; }
+  .faq-item summary {
+    font-weight: 500; cursor: pointer; list-style: none;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.98rem; gap: 1rem;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 1.4rem; font-weight: 300; color: var(--color-navy); flex-shrink: 0; }
+  .faq-item[open] summary::after { content: '-'; }
+  .faq-item p { margin-top: 0.75rem; font-size: 0.92rem; color: var(--color-text-muted); line-height: 1.75; }
+
+  @media (max-width: 860px) {
+    .split, .examples-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .examples-list { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,242 @@
+---
+import Base from '../layouts/Base.astro';
+import business from '../data/business.json';
+
+const faq = [
+  {
+    q: "Can you build a V-berth mattress?",
+    a: "Yes. V-berths are wedge-shaped and almost never match a standard size. The best approach is a paper template: trace the sleeping surface onto a large sheet of paper or cardboard, mark the dimensions, and bring it in. We build to the template exactly."
+  },
+  {
+    q: "How do I provide measurements for an irregular berth?",
+    a: "A paper template is more reliable than measurements alone for curved or tapered berths. Lay paper or kraft paper over the sleeping surface, trace the perimeter, and note the depth you need. For quarter berths and settees, a photo alongside the template helps."
+  },
+  {
+    q: "Is natural latex suitable for a marine environment?",
+    a: "Yes. Natural latex is more moisture-resistant than synthetic foam, which can absorb water and develop mold. It also doesn't off-gas, which matters in an enclosed cabin. It won't degrade from the humidity of a marine environment the way standard foam does."
+  },
+  {
+    q: "How long does a boat mattress build take?",
+    a: "About two weeks from point of order. We deliver within Ottawa city limits. If your boat is at a marina or storage facility within that area, we can deliver there."
+  },
+  {
+    q: "What thickness can you build to?",
+    a: "Standard is 12 inches, but we can build to any thickness you need. Boat berths often have depth constraints, and we'll build to whatever fits your space."
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faq.map(item => ({
+    "@type": "Question",
+    "name": item.q,
+    "acceptedAnswer": { "@type": "Answer", "text": item.a }
+  }))
+};
+---
+
+<Base
+  title="Boat & Marine Mattress Ottawa | Custom Built | Ottawa Mattress"
+  description="Custom boat and marine mattresses for berths, V-bunks, and settees. Built to a paper template or precise measurements. Natural latex, 2-week lead time, Ottawa delivery."
+  schema={schema}
+>
+
+  <section class="page-header">
+    <div class="container">
+      <p class="page-eyebrow">Ottawa Mattress</p>
+      <h1>Custom Boat & Marine Mattresses</h1>
+      <p>Berths, V-bunks, and settees are rarely rectangular. We build to your template or exact measurements in natural latex, with a two-week lead time.</p>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="container split">
+      <div class="split__image">
+        <img src="/images/specialty/boat.webp" alt="Custom natural latex mattress in a boat cabin" width="800" height="800" loading="eager" />
+      </div>
+      <div class="split__text">
+        <h2>Boat berths aren't rectangles</h2>
+        <p>V-berths taper to a point. Quarter berths angle with the hull. Settees fold and have odd proportions. Standard mattress sizes don't come close to fitting these spaces, and the foam pads that come with most boats are thin and short-lived.</p>
+        <p>We've built custom sleeping surfaces for sailboats, powerboats, and cruisers, including a Catalina yacht berth. Every build starts with your template or measurements, and ends with a mattress that fits the space precisely.</p>
+        <p>Natural latex is the right material for a marine environment. It resists moisture, doesn't off-gas in an enclosed cabin, and holds its shape for 25+ years without permanent compression.</p>
+        <div class="split__actions">
+          <a href={`tel:${business.phone}`} class="btn btn-primary">{business.phoneFormatted}</a>
+          <a href="/contact/" class="btn btn-outline">Showroom Hours</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cream-dark">
+    <div class="container why-section">
+      <div class="why-section__header">
+        <h2>Why natural latex for a boat</h2>
+      </div>
+      <div class="why-section__points">
+        <div class="why-point">
+          <h3>Moisture resistance</h3>
+          <p>Natural latex doesn't absorb water the way open-cell synthetic foam does. Marine environments are humid. A latex core won't develop the water retention problems that standard foam develops in a boat cabin over time.</p>
+        </div>
+        <div class="why-point">
+          <h3>No off-gassing</h3>
+          <p>Memory foam off-gasses volatile organic compounds. In a small, enclosed cabin this is worse than in a bedroom. Natural latex doesn't off-gas. No chemical smell, no VOCs in a space with limited ventilation.</p>
+        </div>
+        <div class="why-point">
+          <h3>Shape retention</h3>
+          <p>Boat berths are often used for sitting as well as sleeping. Synthetic foam compresses under repeated pressure at the edges. Natural latex returns to its original shape and holds its ILD for the life of the mattress.</p>
+        </div>
+        <div class="why-point">
+          <h3>Custom thickness</h3>
+          <p>Boat berths have depth constraints. We build to any thickness you need. If your berth has 6 inches of clearance, we build a 6-inch mattress. Standard thickness is 12 inches but nothing about this is standard.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="container" style="max-width: 720px;">
+      <h2>How the measuring process works</h2>
+      <ol class="process-list">
+        <li>
+          <span class="process-num">1</span>
+          <div>
+            <strong>We handle the measuring.</strong> If your boat is accessible in Ottawa, we can come to you. If you'd rather do it yourself, lay kraft paper over the sleeping surface, trace the perimeter, and note the depth. For complex shapes a photo alongside the template helps. Either way, call first and we'll figure out the easiest approach.
+          </div>
+        </li>
+        <li>
+          <span class="process-num">2</span>
+          <div>
+            <strong>Confirm the spec.</strong> We'll walk you through support layer, firmness, and whether a comfort layer makes sense for the space. Boat berths often have thickness constraints and we'll flag anything relevant before the build starts.
+          </div>
+        </li>
+        <li>
+          <span class="process-num">3</span>
+          <div>
+            <strong>Two weeks to delivery.</strong> That's our standard lead time for a fully custom natural latex build — most custom builders run 4-8 weeks. We deliver within Ottawa, or pickup at the Nepean showroom.
+          </div>
+        </li>
+      </ol>
+      <div style="margin-top: 2rem;">
+        <a href={`tel:${business.phone}`} class="btn btn-primary">{business.phoneFormatted}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cream-dark">
+    <div class="container" style="max-width: 760px;">
+      <h2 style="margin-bottom: 2rem;">Common questions</h2>
+      <div class="faq-list">
+        {faq.map(item => (
+          <details class="faq-item">
+            <summary>{item.q}</summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--navy text-center">
+    <div class="container" style="max-width: 580px;">
+      <h2>Ready to build your boat mattress?</h2>
+      <p style="opacity: 0.82; line-height: 1.75; margin: 1rem 0 2rem;">
+        Start with a paper template of your berth and call us. We'll confirm the spec and have it built in two weeks.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href={`tel:${business.phone}`} class="btn btn-outline-cream">{business.phoneFormatted}</a>
+        <a href="/contact/" class="btn btn-outline-cream">Showroom Hours</a>
+      </div>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  .page-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin-bottom: 1rem;
+    color: var(--color-cream);
+    font-style: italic;
+  }
+
+  .page-header p { max-width: 580px; }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .split__image { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--color-border); }
+  .split__image img { width: 100%; height: auto; display: block; }
+  .split__text h2 { margin-bottom: 1rem; }
+  .split__text p { color: var(--color-text-muted); line-height: 1.75; margin-bottom: 1rem; font-size: 0.97rem; }
+  .split__actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.75rem; }
+
+  .why-section {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .why-section__header h2 { margin: 0; }
+
+  .why-section__points {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .why-point h3 { font-size: 0.95rem; margin-bottom: 0.5rem; }
+  .why-point p { font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.7; margin: 0; }
+
+  .process-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    padding: 0;
+  }
+
+  .process-list li {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 1rem;
+    align-items: start;
+    font-size: 0.97rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+  }
+
+  .process-num {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--color-navy);
+    line-height: 1.1;
+    opacity: 0.35;
+  }
+
+  .process-list strong { color: var(--color-charcoal); }
+
+  .faq-item { border-bottom: 1px solid var(--color-border); padding: 1.1rem 0; }
+  .faq-item summary {
+    font-weight: 500; cursor: pointer; list-style: none;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.98rem; gap: 1rem;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 1.4rem; font-weight: 300; color: var(--color-navy); flex-shrink: 0; }
+  .faq-item[open] summary::after { content: '-'; }
+  .faq-item p { margin-top: 0.75rem; font-size: 0.92rem; color: var(--color-text-muted); line-height: 1.75; }
+
+  @media (max-width: 860px) {
+    .split, .why-section { grid-template-columns: 1fr; gap: 2rem; }
+    .why-section__points { grid-template-columns: 1fr; }
+  }
+</style>

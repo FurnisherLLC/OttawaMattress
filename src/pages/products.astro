@@ -51,12 +51,14 @@ const specialty = [
     name: 'RV Mattresses',
     img: '/images/specialty/rv.webp',
     desc: 'No two RVs share the same sleeping space. We build to your exact measurements in any configuration. Natural latex is lighter than coil and holds its shape without a box spring.',
+    href: '/rv-mattress-ottawa/',
   },
   {
     id: 'boat',
     name: 'Boat & Marine Mattresses',
     img: '/images/specialty/boat.webp',
     desc: 'Berths, settees, and V-bunks are rarely rectangular. We build to a paper template or precise measurements. Natural latex resists moisture and holds its form under humid conditions.',
+    href: '/boat-mattress-ottawa/',
   },
   {
     id: 'custom-pillows',
@@ -69,6 +71,7 @@ const specialty = [
     name: 'Custom Shapes & Sizes',
     img: '/images/specialty/heart.webp',
     desc: 'Antique frames, platform beds, unusual dimensions, non-standard shapes. If your size does not exist in a catalog, we build it. Bring measurements or a paper template.',
+    href: '/custom-size-mattress/',
   },
 ];
 
@@ -191,6 +194,7 @@ const productSchema = {
             <div class="specialty-card__body">
               <h3>{s.name}</h3>
               <p>{s.desc}</p>
+              {s.href && <a href={s.href} class="specialty-card__link">Learn more</a>}
             </div>
           </div>
         ))}
@@ -451,6 +455,19 @@ const productSchema = {
     line-height: 1.65;
     margin: 0;
   }
+
+  .specialty-card__link {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--color-navy);
+    border-bottom: 1px solid var(--color-navy);
+    padding-bottom: 1px;
+    transition: opacity 0.15s;
+  }
+
+  .specialty-card__link:hover { opacity: 0.65; }
 
   .specialty-cta {
     display: flex;

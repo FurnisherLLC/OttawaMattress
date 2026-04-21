@@ -1,0 +1,254 @@
+---
+import Base from '../layouts/Base.astro';
+import business from '../data/business.json';
+
+const faq = [
+  {
+    q: "What RV mattress dimensions can you build?",
+    a: "Any dimension. Short Queen (60x75), RV King (72x80), bunk sizes (28x75, 30x75), and any other measurement are all straightforward. If your sleeping space is irregular, measure it and we'll build to that. A paper template works better than measurements alone for unusual shapes."
+  },
+  {
+    q: "How do I measure my RV sleeping space?",
+    a: "Length and width at the widest point. If the space tapers or has cutouts, trace the perimeter onto a large sheet of paper or cardboard and bring that as a template. A physical template eliminates measuring error."
+  },
+  {
+    q: "Why is natural latex better for an RV than foam-in-a-box mattresses?",
+    a: "Standard compressed foam mattresses sag within two to three years under regular use and road vibration. Natural latex is resilient in a way synthetic foam isn't. It holds its ILD (firmness) for 25+ years, doesn't compress permanently, doesn't need a box spring, and is lighter than a comparable coil and foam hybrid."
+  },
+  {
+    q: "How long does an RV mattress build take?",
+    a: "About two weeks from point of order. That's fast for a fully custom natural latex build. Most custom mattress builders run 4-8 weeks. We deliver within Ottawa, or pickup at our Nepean showroom."
+  },
+  {
+    q: "Can you build an RV mattress with a specific firmness?",
+    a: "Yes. RV mattresses use the same three-layer construction as our Beaumont line: support layer (latex or coil), transition layer (your firmness: Soft, Medium, Firm, or Extra Firm), and optional comfort layer. You specify the firmness the same way."
+  },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faq.map(item => ({
+    "@type": "Question",
+    "name": item.q,
+    "acceptedAnswer": { "@type": "Answer", "text": item.a }
+  }))
+};
+---
+
+<Base
+  title="RV Mattress Ottawa | Custom Natural Latex | Ottawa Mattress"
+  description="Custom RV mattresses built to your exact dimensions. Short Queen, RV King, bunk sizes, or any non-standard measurement. Natural latex, 2-week build time. Ottawa Mattress, Nepean."
+  schema={schema}
+>
+
+  <section class="page-header">
+    <div class="container">
+      <p class="page-eyebrow">Ottawa Mattress</p>
+      <h1>Custom RV Mattresses in Ottawa</h1>
+      <p>RV sleeping spaces don't follow standard mattress dimensions. We build to your exact measurements in natural latex, with a two-week lead time.</p>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="container split">
+      <div class="split__image">
+        <img src="/images/specialty/rv.webp" alt="Custom natural latex mattress installed in an RV bedroom" width="800" height="800" loading="eager" />
+      </div>
+      <div class="split__text">
+        <h2>The problem with RV mattresses</h2>
+        <p>RV manufacturers don't use standard mattress sizes. A Short Queen is 60 by 75 inches, not 60 by 80. RV Kings run 72 by 80. Bunk dimensions vary by coach, by year, by manufacturer. Slide-out sleeping areas are often irregular shapes.</p>
+        <p>The standard solution is a compressed foam mattress shipped in a box. These are cheap, and they perform accordingly. Most compress significantly within two or three years of road use.</p>
+        <p>We build natural latex mattresses to your exact dimensions. Same construction as our showroom Beaumont mattresses, sized for your specific sleeping space.</p>
+        <div class="split__actions">
+          <a href={`tel:${business.phone}`} class="btn btn-primary">{business.phoneFormatted}</a>
+          <a href="/contact/" class="btn btn-outline">Showroom Hours</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cream-dark">
+    <div class="container why-section">
+      <div class="why-section__header">
+        <h2>Why natural latex for an RV</h2>
+      </div>
+      <div class="why-section__points">
+        <div class="why-point">
+          <h3>Weight</h3>
+          <p>Natural latex is lighter than a comparable coil innerspring mattress. RVs have weight ratings. A 12-inch natural latex mattress weighs less than a 12-inch coil-and-foam hybrid without sacrificing support.</p>
+        </div>
+        <div class="why-point">
+          <h3>No box spring required</h3>
+          <p>RV sleeping platforms are solid. Coil mattresses are designed to work with a box spring. Natural latex is self-supporting and works directly on a solid platform without losing performance.</p>
+        </div>
+        <div class="why-point">
+          <h3>Road durability</h3>
+          <p>Road vibration compresses synthetic foam over time. Natural latex is resilient in a way memory foam isn't. The mattress you install will feel the same in ten years as it does today.</p>
+        </div>
+        <div class="why-point">
+          <h3>25-year lifespan</h3>
+          <p>A quality RV mattress should be a one-time purchase. Cheap foam options need replacing every few years. Natural latex doesn't compress permanently, doesn't off-gas, and doesn't degrade under normal use.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="container" style="max-width: 720px;">
+      <h2>How to order</h2>
+      <ol class="process-list">
+        <li>
+          <span class="process-num">1</span>
+          <div>
+            <strong>We handle the measuring.</strong> If you can bring the RV to our Nepean location or want to take measurements yourself, great. If not, we can send someone to you. Call and we'll figure out whichever is easier.
+          </div>
+        </li>
+        <li>
+          <span class="process-num">2</span>
+          <div>
+            <strong>Choose your configuration.</strong> Support layer is latex or coil. Transition layer density is your firmness: Soft, Medium, Firm, or Extra Firm. Comfort layer is an optional removable pillow top. We'll walk you through it.
+          </div>
+        </li>
+        <li>
+          <span class="process-num">3</span>
+          <div>
+            <strong>Two weeks to delivery.</strong> That's our standard build time for a fully custom natural latex mattress. Most custom builders run 4-8 weeks. We deliver within Ottawa, or pickup at the showroom.
+          </div>
+        </li>
+      </ol>
+      <div style="margin-top: 2rem;">
+        <a href={`tel:${business.phone}`} class="btn btn-primary">{business.phoneFormatted}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cream-dark">
+    <div class="container" style="max-width: 760px;">
+      <h2 style="margin-bottom: 2rem;">Common questions</h2>
+      <div class="faq-list">
+        {faq.map(item => (
+          <details class="faq-item">
+            <summary>{item.q}</summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--navy text-center">
+    <div class="container" style="max-width: 580px;">
+      <h2>Ready to order your RV mattress?</h2>
+      <p style="opacity: 0.82; line-height: 1.75; margin: 1rem 0 2rem;">
+        Call with your dimensions or come into the Nepean showroom and we'll work through the spec together. Two weeks to delivery within Ottawa.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href={`tel:${business.phone}`} class="btn btn-outline-cream">{business.phoneFormatted}</a>
+        <a href="/contact/" class="btn btn-outline-cream">Showroom Hours</a>
+      </div>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  .page-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin-bottom: 1rem;
+    color: var(--color-cream);
+    font-style: italic;
+  }
+
+  .page-header p { max-width: 580px; }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .split__image {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+  }
+
+  .split__image img { width: 100%; height: auto; display: block; }
+
+  .split__text h2 { margin-bottom: 1rem; }
+  .split__text p {
+    color: var(--color-text-muted);
+    line-height: 1.75;
+    margin-bottom: 1rem;
+    font-size: 0.97rem;
+  }
+
+  .split__actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.75rem; }
+
+  .why-section {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .why-section__header h2 { margin: 0; }
+
+  .why-section__points {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .why-point h3 { font-size: 0.95rem; margin-bottom: 0.5rem; }
+  .why-point p { font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.7; margin: 0; }
+
+  .process-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    padding: 0;
+  }
+
+  .process-list li {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 1rem;
+    align-items: start;
+    font-size: 0.97rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+  }
+
+  .process-num {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--color-navy);
+    line-height: 1.1;
+    opacity: 0.35;
+  }
+
+  .process-list strong { color: var(--color-charcoal); }
+
+  .faq-item { border-bottom: 1px solid var(--color-border); padding: 1.1rem 0; }
+  .faq-item summary {
+    font-weight: 500; cursor: pointer; list-style: none;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.98rem; gap: 1rem;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 1.4rem; font-weight: 300; color: var(--color-navy); flex-shrink: 0; }
+  .faq-item[open] summary::after { content: '-'; }
+  .faq-item p { margin-top: 0.75rem; font-size: 0.92rem; color: var(--color-text-muted); line-height: 1.75; }
+
+  @media (max-width: 860px) {
+    .split, .why-section { grid-template-columns: 1fr; gap: 2rem; }
+    .why-section__points { grid-template-columns: 1fr; }
+  }
+</style>

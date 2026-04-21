@@ -1,0 +1,270 @@
+---
+import Base from '../layouts/Base.astro';
+import business from '../data/business.json';
+
+const faq = [
+  {
+    q: "How can I tell if my mattress needs replacing?",
+    a: "The clearest signs: visible sagging or body impressions deeper than an inch, waking up sore when you didn't go to bed sore, sleeping better on a couch or hotel bed than at home, or noticing the mattress has changed shape or firmness compared to when you bought it. Any one of these is a reliable indicator."
+  },
+  {
+    q: "Does rotating a mattress extend its life?",
+    a: "For coil innerspring mattresses, rotating regularly distributes wear and extends the life meaningfully. For foam mattresses, it helps somewhat. Natural latex is the most resistant to uneven compression, but rotating is still reasonable practice. Flipping is only relevant if your mattress is two-sided, which most modern mattresses are not. Our Beaumont mattresses are flippable."
+  },
+  {
+    q: "Can back pain be caused by an old mattress?",
+    a: "Yes, and it's one of the most common causes. As a mattress loses support, the spine no longer stays neutral during sleep. The muscles that compensate during the night create the stiffness and pain you feel in the morning. If you wake sore and the pain diminishes through the day, the mattress is worth investigating."
+  },
+  {
+    q: "Does a more expensive mattress last longer?",
+    a: "It depends on the material, not the price. Natural latex at $2,000 will outlast a $5,000 pillow-top innerspring. The material is what determines lifespan. Marketing, brand names, and hotel-grade labeling don't predict how a mattress holds up under use."
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faq.map(item => ({
+    "@type": "Question",
+    "name": item.q,
+    "acceptedAnswer": { "@type": "Answer", "text": item.a }
+  }))
+};
+---
+
+<Base
+  title="How Long Does a Mattress Last? | Ottawa Mattress"
+  description="Memory foam lasts 7-10 years before significant sagging. Natural latex lasts 25+ years. What actually determines mattress lifespan, how to tell when yours needs replacing, and the cost-per-year math."
+  schema={schema}
+>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>How Long Does a Mattress Last?</h1>
+      <p>It depends almost entirely on the material. The range is 7 years to 30+ years, and the difference isn't price.</p>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="container article-body">
+
+      <p class="lede">Most mattress manufacturers don't advertise expected lifespan because the honest answer doesn't sell cheap mattresses. Here's what the materials actually deliver.</p>
+
+      <div class="lifespan-cards">
+        <div class="lifespan-card">
+          <div class="lifespan-card__years">7-10 yrs</div>
+          <h3>Memory Foam</h3>
+          <p>Memory foam compresses permanently under body weight over time. The foam's cell structure breaks down, and the mattress loses its original firmness and support. Most memory foam mattresses show significant sagging by year 7-8 and need replacing by year 10. "Luxury" memory foam fares somewhat better but follows the same trajectory.</p>
+        </div>
+        <div class="lifespan-card">
+          <div class="lifespan-card__years">7-12 yrs</div>
+          <h3>Innerspring & Hybrid</h3>
+          <p>Coil innerspring mattresses depend on coil gauge, count, and the quality of the foam layers on top. The coils themselves can last longer, but the comfort layers above them compress and sag first. Hybrids (coil plus foam layers) inherit this problem. Expect 8-12 years from a quality hybrid before the comfort layers fail.</p>
+        </div>
+        <div class="lifespan-card lifespan-card--featured">
+          <div class="lifespan-card__years">25+ yrs</div>
+          <h3>Natural Latex</h3>
+          <p>Natural latex doesn't compress permanently. Its resilience comes from the cellular structure of vulcanized rubber, which returns to its original shape after pressure is released. A natural latex mattress bought today will have essentially the same ILD (firmness measure) in 25 years. This is not a marketing claim. It's a material property.</p>
+        </div>
+      </div>
+
+      <div class="article-section">
+        <h2>What causes mattresses to break down</h2>
+        <p>For synthetic foam, the mechanism is cell collapse. Foam is made of air pockets. Under repeated compression, those pockets collapse and don't fully reinflate. This is permanent. The process accelerates with heat (which memory foam specifically generates), body weight, and time.</p>
+        <p>For innerspring mattresses, coil fatigue and comfort layer compression are the usual culprits. The coils can last decades, but the materials layered on top fail first.</p>
+        <p>Natural latex doesn't have the cell-collapse problem. It's vulcanized rubber, which has a different mechanical response to compression. It deforms under load and returns to its original shape. 25 years of nightly use doesn't change that.</p>
+      </div>
+
+      <div class="article-section">
+        <h2>The cost-per-year math</h2>
+        <p>A quality memory foam mattress costs $1,200 to $2,000 CAD and lasts 8-10 years. A comparable natural latex mattress costs $1,800 to $3,500 and lasts 25+ years. Over 25 years:</p>
+        <div class="cost-comparison">
+          <div class="cost-item">
+            <div class="cost-item__label">Memory foam (replaced 2-3 times)</div>
+            <div class="cost-item__total">$3,600 to $6,000</div>
+            <div class="cost-item__per-year">$144 to $240 per year</div>
+          </div>
+          <div class="cost-item cost-item--latex">
+            <div class="cost-item__label">Natural latex (one purchase)</div>
+            <div class="cost-item__total">$1,800 to $3,500</div>
+            <div class="cost-item__per-year">$72 to $140 per year</div>
+          </div>
+        </div>
+        <p>Natural latex costs less per year of use in most comparisons, and performs consistently throughout that time rather than degrading as the years pass.</p>
+      </div>
+
+      <div class="article-section">
+        <h2>Signs your mattress needs replacing</h2>
+        <p>The clearest indicators, in order of reliability:</p>
+        <ul class="signs-list">
+          <li><strong>Visible sagging or body impressions.</strong> If you can see where you sleep in the mattress surface, the foam has permanently compressed. Anything deeper than about an inch is meaningful.</li>
+          <li><strong>You sleep better elsewhere.</strong> If you wake up feeling better after a night in a hotel or on a couch than you do in your own bed, your mattress is causing the problem.</li>
+          <li><strong>Morning soreness that improves through the day.</strong> Soreness that diminishes as you move around points to sleep posture, which points to mattress support.</li>
+          <li><strong>Noise.</strong> Coil mattresses creak when the springs fatigue. A mattress that makes noise under movement has worn coils.</li>
+          <li><strong>Age.</strong> If it's over 10 years old and synthetic foam, assume the support is compromised even if you can't easily see it.</li>
+        </ul>
+      </div>
+
+      <div class="article-section">
+        <h2>How to extend mattress life</h2>
+        <p>For any mattress: use a quality mattress protector. Moisture accelerates foam breakdown. Rotate the mattress 180 degrees every six months to distribute wear. If it's flippable, flip it too.</p>
+        <p>For natural latex specifically, these steps matter less because the material is more resistant to the things that kill foam. But a protector is still worthwhile to protect the ticking and keep the mattress clean.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section section--cream-dark">
+    <div class="container" style="max-width: 760px;">
+      <h2 style="margin-bottom: 2rem;">Common questions</h2>
+      <div class="faq-list">
+        {faq.map(item => (
+          <details class="faq-item">
+            <summary>{item.q}</summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--navy text-center">
+    <div class="container" style="max-width: 580px;">
+      <h2>Buy the last mattress you'll need</h2>
+      <p style="opacity: 0.82; line-height: 1.75; margin: 1rem 0 2rem;">
+        Natural latex built to your spec, from $1,200 CAD. Come see it in the Nepean showroom or call to talk through options.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href={`tel:${business.phone}`} class="btn btn-outline-cream">{business.phoneFormatted}</a>
+        <a href="/products/" class="btn btn-outline-cream">View the Collection</a>
+      </div>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  .page-header p { max-width: 560px; }
+
+  .article-body { max-width: 740px; }
+
+  .lede {
+    font-size: 1.08rem;
+    line-height: 1.75;
+    color: var(--color-charcoal);
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .lifespan-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .lifespan-card {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    background: var(--color-cream-dark);
+  }
+
+  .lifespan-card--featured {
+    background: var(--color-navy);
+    border-color: var(--color-navy);
+  }
+
+  .lifespan-card--featured h3 { color: var(--color-cream); }
+  .lifespan-card--featured p { color: rgba(247, 243, 236, 0.75); }
+
+  .lifespan-card__years {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-navy);
+  }
+
+  .lifespan-card--featured .lifespan-card__years {
+    color: var(--color-cream);
+  }
+
+  .lifespan-card h3 { font-size: 1rem; margin-bottom: 0.75rem; }
+
+  .lifespan-card p {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .article-section {
+    margin-bottom: 2.75rem;
+    padding-bottom: 2.75rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .article-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .article-section h2 { font-size: 1.35rem; margin-bottom: 1rem; }
+  .article-section p { color: var(--color-text-muted); line-height: 1.78; margin-bottom: 1rem; font-size: 0.97rem; }
+  .article-section p:last-child { margin-bottom: 0; }
+
+  .cost-comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .cost-item {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    background: var(--color-white);
+  }
+
+  .cost-item--latex {
+    border-color: var(--color-navy);
+    background: var(--color-cream-dark);
+  }
+
+  .cost-item__label { font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 0.5rem; }
+  .cost-item__total { font-size: 1.15rem; font-weight: 600; color: var(--color-charcoal); margin-bottom: 0.25rem; }
+  .cost-item__per-year { font-size: 0.82rem; color: var(--color-text-muted); }
+
+  .signs-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin: 1rem 0 0;
+  }
+
+  .signs-list li {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+    padding-left: 1rem;
+    border-left: 2px solid var(--color-border);
+  }
+
+  .signs-list strong { color: var(--color-charcoal); }
+
+  .faq-item { border-bottom: 1px solid var(--color-border); padding: 1.1rem 0; }
+  .faq-item summary {
+    font-weight: 500; cursor: pointer; list-style: none;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.98rem; gap: 1rem;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 1.4rem; font-weight: 300; color: var(--color-navy); flex-shrink: 0; }
+  .faq-item[open] summary::after { content: '-'; }
+  .faq-item p { margin-top: 0.75rem; font-size: 0.92rem; color: var(--color-text-muted); line-height: 1.75; }
+
+  @media (max-width: 700px) {
+    .lifespan-cards { grid-template-columns: 1fr; }
+    .cost-comparison { grid-template-columns: 1fr; }
+  }
+</style>

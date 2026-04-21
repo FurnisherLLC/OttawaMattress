@@ -1,0 +1,240 @@
+---
+import Base from '../layouts/Base.astro';
+import business from '../data/business.json';
+
+const faq = [
+  {
+    q: "Is natural latex safe for people with latex allergies?",
+    a: "Processed natural latex mattresses have very low levels of the proteins that cause latex allergies. Most people with latex sensitivities sleep on natural latex mattresses without issue. However, if you have a documented severe latex allergy, consult your doctor before purchasing. We can discuss the specific processing of our latex if that's a concern."
+  },
+  {
+    q: "What's the difference between Talalay and Dunlop latex?",
+    a: "Both are natural latex, processed differently. Dunlop is denser and more consistent throughout, slightly firmer feel. Talalay is lighter and more breathable, with a more uniform cell structure. Both last 25+ years. We use whichever makes sense for your specific build."
+  },
+  {
+    q: "Can natural latex be as soft as memory foam?",
+    a: "Yes. Natural latex at soft ILD provides deep pressure relief comparable to memory foam, but with immediate response rather than slow contouring. Most people find the feel of soft latex preferable to memory foam once they've tried both."
+  },
+  {
+    q: "Does natural latex off-gas?",
+    a: "No. Natural latex has a slight natural rubber smell when new that dissipates quickly. It doesn't off-gas volatile organic compounds. Memory foam off-gassing is a known issue, particularly in the first few weeks after unpacking."
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faq.map(item => ({
+    "@type": "Question",
+    "name": item.q,
+    "acceptedAnswer": { "@type": "Answer", "text": item.a }
+  }))
+};
+
+const comparison = [
+  { category: 'Lifespan', latex: '25+ years', foam: '7-10 years' },
+  { category: 'Response time', latex: 'Immediate', foam: '1-3 seconds' },
+  { category: 'Temperature', latex: 'Neutral (open cell)', foam: 'Retains heat' },
+  { category: 'Off-gassing', latex: 'None', foam: 'Yes (VOCs)' },
+  { category: 'Motion transfer', latex: 'Low', foam: 'Very low' },
+  { category: 'Upfront cost', latex: 'Higher', foam: 'Lower' },
+  { category: 'Cost per year', latex: 'Lower over time', foam: 'Higher over time' },
+];
+---
+
+<Base
+  title="Natural Latex vs Memory Foam: What's the Difference | Ottawa Mattress"
+  description="Natural latex and memory foam feel similar but behave very differently over time. Response, temperature, lifespan, and off-gassing compared honestly. Ottawa Mattress."
+  schema={schema}
+>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>Natural Latex vs Memory Foam</h1>
+      <p>They're both foam. That's roughly where the similarity ends.</p>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="container article-body">
+
+      <p class="lede">Memory foam became the dominant mattress material in the 2000s because it was cheap to produce and easy to market. Natural latex has been around longer, performs better on most measures, and lasts decades longer. Here's the honest comparison.</p>
+
+      <div class="comparison-table-wrap">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Natural Latex</th>
+              <th>Memory Foam</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparison.map(row => (
+              <tr>
+                <td class="category">{row.category}</td>
+                <td class="latex">{row.latex}</td>
+                <td class="foam">{row.foam}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="article-section">
+        <h2>Response time</h2>
+        <p>Memory foam is temperature-sensitive. It softens under body heat and conforms slowly, then springs back slowly when you move. This creates the characteristic "stuck" or "sinking" feeling. For combination sleepers who change position during the night, this lag means waking up each time you shift.</p>
+        <p>Natural latex responds immediately. It conforms under pressure and returns to shape as soon as that pressure is released. You're never fighting the mattress when you move. This is one of the most noticeable differences in practice and one of the hardest to convey without lying on both.</p>
+      </div>
+
+      <div class="article-section">
+        <h2>Temperature</h2>
+        <p>Memory foam uses body heat to activate its contouring. The tradeoff is that it retains that heat. People who sleep hot consistently report worse outcomes on memory foam. Gel-infused and "cooling" memory foam products address this somewhat but don't eliminate it.</p>
+        <p>Natural latex has an open-cell structure, meaning air moves through it. It doesn't trap heat. If you sleep hot, this is a meaningful difference. Not a marketing claim — a physical property of how the materials are structured.</p>
+      </div>
+
+      <div class="article-section">
+        <h2>Lifespan</h2>
+        <p>This is where the economics of the two materials separate clearly. Memory foam compresses permanently over time. A 12-inch memory foam mattress is effectively 9 to 10 inches after five years of use. The firmness you bought is not the firmness you sleep on after a few years. Most memory foam mattresses need replacing every 7 to 10 years.</p>
+        <p>Natural latex does not compress permanently under normal load. Its ILD (firmness) stays consistent for 25 years or more. The mattress you buy is the mattress you sleep on in 2035. This changes the cost calculation significantly: a $2,000 memory foam mattress replaced three times over the life of a $3,500 latex mattress costs more and performs worse.</p>
+      </div>
+
+      <div class="article-section">
+        <h2>Off-gassing</h2>
+        <p>Memory foam off-gases volatile organic compounds, particularly in the first weeks after purchase. That "new mattress smell" is VOCs. For most people it's a minor annoyance. For people with chemical sensitivities, respiratory conditions, or concerns about indoor air quality, it's a real issue.</p>
+        <p>Natural latex has a slight natural rubber smell when new. This dissipates quickly and is not VOCs. If you've ever walked into a tire shop and found the smell inoffensive, that's the closest analogue. It's gone within a week or two of airing out.</p>
+      </div>
+
+      <div class="article-section">
+        <h2>Who should choose memory foam</h2>
+        <p>The main advantage memory foam has is upfront cost. If budget is the primary constraint, a quality memory foam mattress is a reasonable purchase. The other scenario is someone who specifically wants that slow-contouring feel and finds the immediate response of latex uncomfortable. It's a minority preference but it exists.</p>
+        <p>For everyone else, natural latex is the better material. It performs better, lasts longer, and the lifetime cost is lower despite the higher upfront price.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section section--cream-dark">
+    <div class="container" style="max-width: 760px;">
+      <h2 style="margin-bottom: 2rem;">Common questions</h2>
+      <div class="faq-list">
+        {faq.map(item => (
+          <details class="faq-item">
+            <summary>{item.q}</summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--navy text-center">
+    <div class="container" style="max-width: 580px;">
+      <h2>Try natural latex in the showroom</h2>
+      <p style="opacity: 0.82; line-height: 1.75; margin: 1rem 0 2rem;">
+        We have demonstration mattresses at our Nepean showroom. Come in and feel the difference between firmness levels and compare the latex response for yourself.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href={`tel:${business.phone}`} class="btn btn-outline-cream">{business.phoneFormatted}</a>
+        <a href="/products/" class="btn btn-outline-cream">View the Collection</a>
+      </div>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  .page-header p { max-width: 480px; }
+
+  .article-body {
+    max-width: 740px;
+  }
+
+  .lede {
+    font-size: 1.08rem;
+    line-height: 1.75;
+    color: var(--color-charcoal);
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .comparison-table-wrap {
+    overflow-x: auto;
+    margin-bottom: 3rem;
+  }
+
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+
+  .comparison-table th {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    border-bottom: 2px solid var(--color-border);
+  }
+
+  .comparison-table th:first-child { padding-left: 0; }
+
+  .comparison-table td {
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .comparison-table td:first-child { padding-left: 0; }
+
+  .comparison-table .category {
+    font-weight: 500;
+    color: var(--color-charcoal);
+    white-space: nowrap;
+  }
+
+  .comparison-table .latex { color: var(--color-charcoal); }
+  .comparison-table .foam { color: var(--color-text-muted); }
+
+  .article-section {
+    margin-bottom: 2.75rem;
+    padding-bottom: 2.75rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .article-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .article-section h2 {
+    font-size: 1.35rem;
+    margin-bottom: 1rem;
+  }
+
+  .article-section p {
+    color: var(--color-text-muted);
+    line-height: 1.78;
+    margin-bottom: 1rem;
+    font-size: 0.97rem;
+  }
+
+  .article-section p:last-child { margin-bottom: 0; }
+
+  .faq-item { border-bottom: 1px solid var(--color-border); padding: 1.1rem 0; }
+  .faq-item summary {
+    font-weight: 500; cursor: pointer; list-style: none;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.98rem; gap: 1rem;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 1.4rem; font-weight: 300; color: var(--color-navy); flex-shrink: 0; }
+  .faq-item[open] summary::after { content: '-'; }
+  .faq-item p { margin-top: 0.75rem; font-size: 0.92rem; color: var(--color-text-muted); line-height: 1.75; }
+</style>
