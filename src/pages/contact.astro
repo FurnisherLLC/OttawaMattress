@@ -2,6 +2,8 @@
 import Base from '../layouts/Base.astro';
 import business from '../data/business.json';
 
+const metaDescription = `Ottawa Mattress showroom at ${business.address.full}. Mon–Fri 9–4:30, Sat 10–4, Sun 11–3. No appointment needed. Call ${business.phoneFormatted}.`;
+
 const schema = {
   "@context": "https://schema.org",
   "@type": "FurnitureStore",
@@ -34,7 +36,7 @@ const schema = {
 
 <Base
   title="Visit Us | Ottawa Mattress: Showroom in Nepean"
-  description="Ottawa Mattress showroom at 107 Colonnade Rd S #7, Nepean. Mon–Fri 9–4:30, Sat 10–4, Sun 11–3. No appointment needed. Call (613) 224-2150."
+  description={metaDescription}
   schema={schema}
 >
 
